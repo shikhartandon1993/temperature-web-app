@@ -35,7 +35,7 @@ LOG_MODULE_REGISTER(main);
 //xxd -i static/index.html > src/index_html.inc
 /*#include "index_html.inc"*/
 
-//#include "index_html.h"
+////#include "index_html.h"
 
 
 //extern const int my_http_resources_anchor;
