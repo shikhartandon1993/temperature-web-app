@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/home/shikhar/customer-workspace/zephyr/boards/atmel/sam0/same54_xpro/Kconfig.defconfig"

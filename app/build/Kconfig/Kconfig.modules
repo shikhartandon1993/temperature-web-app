@@ -1,0 +1,30 @@
+menu "customer-app (/home/shikhar/customer-workspace/customer-app)"
+osource "/home/shikhar/customer-workspace/customer-app/Kconfig"
+config ZEPHYR_CUSTOMER_APP_MODULE
+	bool
+	default y
+endmenu
+menu "cmsis_6 (/home/shikhar/customer-workspace/modules/hal/cmsis_6)"
+osource "$(ZEPHYR_CMSIS_6_KCONFIG)"
+config ZEPHYR_CMSIS_6_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_ATMEL_MODULE
+	bool
+	default y
+menu "hal_nordic (/home/shikhar/customer-workspace/modules/hal/nordic)"
+osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
+config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+
+config ZEPHYR_HAL_NORDIC_MODULE_BLOBS
+	bool
+endmenu
+config ZEPHYR_HAL_STM32_MODULE
+	bool
+	default y
+
+config ZEPHYR_HAL_STM32_MODULE_BLOBS
+	bool

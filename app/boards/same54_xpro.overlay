@@ -1,0 +1,59 @@
+//“I’m modifying an existing node by label”
+&sercom7 {
+  status = "disabled";
+  compatible = "atmel,sam0-i2c";
+   /delete-node/ eeprom@5e; // Remove the conflicting eeprom label
+};
+
+//“I’m modifying an existing node by label”
+&pinctrl 
+{
+    sercom3_i2c_default: sercom3_i2c_default {
+    group1 {
+    pinmux = <PA22C_SERCOM3_PAD0>, /* SDA "C" is the function group "C"-datasheet pg32*/
+            <PA23C_SERCOM3_PAD1>; /* SCL "C" is the function group "C"-datasheet pg32*/
+            };
+    };
+};
+
+//“I’m modifying an existing node by label”
+/* Enable SERCOM3 as I2C, if not already enabled */
+&sercom3 {
+    status = "okay";
+    compatible = "atmel,sam0-i2c";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+    pinctrl-0 = <&sercom3_i2c_default>;
+    pinctrl-names = "default";//0th index i "default" if it was pinctrl-names = "default" ,"some state" 1st index would be "some state"
+    
+    at30tse75x: at30tse75x@4F
+    {
+        compatible = "atmel,at30tse75x";
+        reg = <0x4F>;//4F I2C address//IO1 xplained PRO pg10
+    };
+
+    eeprom: eeprom@5e {
+		compatible = "atmel,24mac402";//Zephyr sets DT_HAS_ATMEL_AT24MAC402_ENABLED=y
+		reg = <0x5e>;
+    };
+};
+
+
+//“I’m modifying or adding things at the root of the tree” so thats why --> / {}
+/ {
+    leds {
+        compatible = "gpio-leds";
+        io1_led: io1_led {
+            gpios = <&portb 8 GPIO_ACTIVE_LOW>;
+            label = "IO1 Yellow LED";
+                };
+        };
+
+
+    aliases {
+        io1-led = &io1_led;
+        i2c-0 = &sercom3;
+        };
+};
+

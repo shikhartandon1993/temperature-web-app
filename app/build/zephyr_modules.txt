@@ -1,0 +1,5 @@
+"customer-app":"/home/shikhar/customer-workspace/customer-app":"/home/shikhar/customer-workspace/customer-app"
+"cmsis_6":"/home/shikhar/customer-workspace/modules/hal/cmsis_6":"${ZEPHYR_CMSIS_6_CMAKE_DIR}"
+"atmel":"/home/shikhar/customer-workspace/modules/hal/atmel":"/home/shikhar/customer-workspace/modules/hal/atmel"
+"hal_nordic":"/home/shikhar/customer-workspace/modules/hal/nordic":"${ZEPHYR_HAL_NORDIC_CMAKE_DIR}"
+"hal_stm32":"/home/shikhar/customer-workspace/modules/hal/stm32":"/home/shikhar/customer-workspace/modules/hal/stm32"

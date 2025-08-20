@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Temperature Monitor</title>
+<meta charset="utf-8">
+<script>
+function updateTemp() {
+    fetch('/temp')
+        .then(r => r.text())
+        .then(t => {
+            document.getElementById('temp').textContent = t;
+        });
+}
+
+setInterval(updateTemp, 1000); // every 1 second
+window.onload = updateTemp;
+</script>
+</head>
+<body>
+<h1>Current Temperature</h1>
+<div id="temp">Loading...</div>
+</body>
+</html>

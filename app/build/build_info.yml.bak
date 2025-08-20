@@ -1,0 +1,4 @@
+west:
+  command: /home/shikhar/customer-workspace/.venv/bin/west build -p always -b same54_xpro
+  topdir: /home/shikhar/customer-workspace
+  version: 1.4.0

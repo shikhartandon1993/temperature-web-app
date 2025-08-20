@@ -1,0 +1,55 @@
+cmake:
+  application:
+    configuration-dir: '/home/shikhar/customer-workspace/temperature-web-app/app'
+    source-dir: '/home/shikhar/customer-workspace/temperature-web-app/app'
+  board:
+    name: 'same54_xpro'
+    path:
+     - '/home/shikhar/customer-workspace/zephyr/boards/atmel/sam0/same54_xpro'
+    qualifiers: 'same54p20a'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/shikhar/customer-workspace/customer-app/dts/bindings'
+     - '/home/shikhar/customer-workspace/zephyr/dts/bindings'
+    files:
+     - '/home/shikhar/customer-workspace/zephyr/boards/atmel/sam0/same54_xpro/same54_xpro.dts'
+     - '/home/shikhar/customer-workspace/temperature-web-app/app/boards/same54_xpro.overlay'
+    include-dirs:
+     - '/home/shikhar/customer-workspace/customer-app/include'
+     - '/home/shikhar/customer-workspace/customer-app/dts'
+     - '/home/shikhar/customer-workspace/modules/hal/atmel/include'
+     - '/home/shikhar/customer-workspace/modules/hal/stm32/dts'
+     - '/home/shikhar/customer-workspace/zephyr/include'
+     - '/home/shikhar/customer-workspace/zephyr/include/zephyr'
+     - '/home/shikhar/customer-workspace/zephyr/dts/common'
+     - '/home/shikhar/customer-workspace/zephyr/dts/vendor'
+     - '/home/shikhar/customer-workspace/zephyr/dts/rx'
+     - '/home/shikhar/customer-workspace/zephyr/dts/x86'
+     - '/home/shikhar/customer-workspace/zephyr/dts/xtensa'
+     - '/home/shikhar/customer-workspace/zephyr/dts/sparc'
+     - '/home/shikhar/customer-workspace/zephyr/dts/riscv'
+     - '/home/shikhar/customer-workspace/zephyr/dts/posix'
+     - '/home/shikhar/customer-workspace/zephyr/dts/arm64'
+     - '/home/shikhar/customer-workspace/zephyr/dts/arm'
+     - '/home/shikhar/customer-workspace/zephyr/dts/arc'
+     - '/home/shikhar/customer-workspace/zephyr/dts'
+    user-files:
+     - '/home/shikhar/customer-workspace/temperature-web-app/app/boards/same54_xpro.overlay'
+  kconfig:
+    files:
+     - '/home/shikhar/customer-workspace/zephyr/boards/atmel/sam0/same54_xpro/same54_xpro_defconfig'
+     - '/home/shikhar/customer-workspace/temperature-web-app/app/prj.conf'
+    user-files:
+     - '/home/shikhar/customer-workspace/temperature-web-app/app/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/shikhar/zephyr-sdk-0.17.2'
+  zephyr:
+    version: '4.2.0-rc3'
+    zephyr-base: '/home/shikhar/customer-workspace/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/shikhar/customer-workspace/.venv/bin/west build -p always -b same54_xpro'
+  topdir: '/home/shikhar/customer-workspace'
+  version: '1.4.0'

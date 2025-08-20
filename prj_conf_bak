@@ -1,0 +1,120 @@
+#CONFIG_LINKER_MAP=y
+CONFIG_DEBUG_OPTIMIZATIONS=y
+
+#I2C configs
+CONFIG_I2C=y
+CONFIG_I2C_SAM0=y
+
+#config EEPROM
+# Enable EEPROM driver (required for MAC address support)
+#CONFIG_EEPROM=y#no EEPROM driver is being used,only using the EEPROM for MAC via Ethernet driver
+
+
+#logging configs
+CONFIG_PRINTK=y
+CONFIG_LOG=y
+CONFIG_LOG_MODE_IMMEDIATE=y
+CONFIG_I2C_LOG_LEVEL_DBG=y
+CONFIG_LOG_DEFAULT_LEVEL=4
+CONFIG_I2C_LOG_LEVEL_DBG=y
+CONFIG_NET_LOG=y
+
+CONFIG_SERIAL=y
+
+
+#thread configs
+CONFIG_MAIN_STACK_SIZE=4096
+
+#below drivers need tobe enabled,
+#only enabling section-1 macros causes fatal error
+# needs to enabled for Zephyr's internal system workqueue thread
+CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=2048 
+
+#below 3 maybe needed for ping and net_if_get_default()
+CONFIG_NET_TX_STACK_SIZE=2048
+CONFIG_NET_RX_STACK_SIZE=2048
+CONFIG_NET_MGMT_EVENT_STACK_SIZE=1536
+
+CONFIG_THREAD_NAME=y
+CONFIG_THREAD_MONITOR=y
+CONFIG_ASSERT=y#gives ASSERT warnings
+CONFIG_DEBUG_THREAD_INFO=y
+
+#7/23
+#ICMP
+CONFIG_NET_ICMPV4_ACCEPT_BROADCAST=y
+CONFIG_NET_ICMPV4_LOG_LEVEL_DBG=y
+
+#7/23
+# ARP
+CONFIG_NET_ARP=y
+CONFIG_NET_ARP_TABLE_SIZE=3
+CONFIG_NET_ARP_LOG_LEVEL_DBG=y
+CONFIG_NET_ARP_GRATUITOUS=y
+CONFIG_NET_ARP_GRATUITOUS_TRANSMISSION=y
+CONFIG_NET_ARP_LOG_LEVEL_DBG=y
+
+#7/23
+CONFIG_ETH_INIT_PRIORITY=80
+
+
+
+#SECTION - 1
+#ethernet configs
+CONFIG_NETWORKING=y # Enables the networking stack
+CONFIG_NET_IPV4=y # IPv4 support
+CONFIG_NET_SOCKETS=y # BSD socket API (required even for ping replies)
+#CONFIG_NET_TCP=y - 
+CONFIG_NET_UDP=y # Required for some discovery protocols (e.g., ARP reply)
+
+#CONFIG_NET_SOCKETS_POSIX_NAMES=y
+
+
+#enable HTTP server
+#CONFIG_HTTP_SERVER=y - 
+
+# Required for dynamic HTTP resources
+#CONFIG_HTTP_RESOURCE_TYPE_DYNAMIC=y
+
+
+#Let Ethernet use MAC address from EEPROM
+CONFIG_NET_L2_ETHERNET=y # Ethernet link layer
+#/home/shikhar/customer-workspace/zephyr/boards/atmel/sam0/same54_xpro/Kconfig.defconfig
+CONFIG_ETH_SAM_GMAC=y #Ethernet driver for SAME54 MCU
+
+#this driver is not required since EEPROM_AT24=y enables just a EEPROM driver
+#CONFIG_EEPROM_AT24=y #from zephyr/drivers/eeprom
+
+#enables a EEPROM driver connected by I2C which stores MAC address for use with ethernet interface
+#CONFIG_ETH_SAM_GMAC_MAC_I2C_EEPROM=y - #from zephyr/drivers/ethernet
+
+CONFIG_NET_CONFIG_SETTINGS=y               # Enables IP auto configuration
+CONFIG_NET_CONFIG_AUTO_INIT=y              # Automatically init net config during boot
+CONFIG_NET_CONFIG_NEED_IPV4=y              # Because you’re setting IPv4 manually
+
+CONFIG_NET_CONFIG_MY_IPV4_ADDR="192.168.1.100"
+CONFIG_NET_CONFIG_MY_IPV4_NETMASK="255.255.255.0"
+CONFIG_NET_CONFIG_MY_IPV4_GW="192.168.1.1"
+
+# Set buffer sizes
+#CONFIG_HTTP_SERVER_STACK_SIZE=4096 - 
+#CONFIG_HTTP_SERVER_WORKQ_STACK_SIZE=4096
+
+#CONFIG_HTTP_SERVER_CLIENT_BUFFER_SIZE=1024 - 
+#CONFIG_HTTP_SERVER_MAX_URL_LENGTH=128 - 
+#CONFIG_HTTP_SERVER_MAX_HEADER_LEN=128 - 
+#CONFIG_HTTP_SERVER_MAX_CONTENT_TYPE_LENGTH=64 - 
+#CONFIG_HTTP_SERVER_MAX_STREAMS=4 -
+
+# Needed for dynamic handler support
+#CONFIG_HTTP_RESOURCE_TYPE_DYNAMIC=y
+#CONFIG_HTTP_SERVER_ITERABLE_RESOURCES=y
+
+# Optional: reduce logging stack usage
+#CONFIG_LOG_MODE_DEFERRED=y - 
+#CONFIG_LOG_PROCESS_THREAD_STACK_SIZE=2048 - 
+
+
+#not req?
+#CONFIG_NET_CONNECTION_MANAGER=y - 
+
